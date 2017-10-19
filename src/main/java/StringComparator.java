@@ -1,5 +1,3 @@
-package com.sbt.javascchool.rnd;
-
 import java.util.Comparator;
 
 class StringComparator implements Comparator<String> {

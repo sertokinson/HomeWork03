@@ -1,29 +1,30 @@
-package com.sbt.javaschool.sgu;
-
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class Task2056 {
     public static void main(String[] args) throws IOException {
-
+        String filename = "input.txt";
+        List<String> lines = Files.readAllLines(Paths.get(filename), Charset.defaultCharset());
         List<String> strings = new ArrayList<>();
-        File f = new File("input.txt");
-        BufferedReader fin = new BufferedReader(new FileReader(f));
-        String s;
         String s1;
-        while ((s = fin.readLine()) != null) {
-            s1="";
-           for(int i=0;i<s.length();i++){
-               if(s.charAt(i)==' '){
-                   strings.add(s1.toLowerCase());
-                   s1="";
-               }
-               else {
-                   s1+=s.charAt(i);
-                   if(i==s.length()-1)
-                       strings.add(s1.toLowerCase());
-               }
-           }
+        for (String s : lines) {
+                s1 = "";
+                for (int i = 0; i < s.length(); i++) {
+                    if (s.charAt(i) == ' ') {
+                        strings.add(s1.toLowerCase());
+                        s1 = "";
+                    } else {
+                        s1 += s.charAt(i);
+                        if (i == s.length() - 1)
+                            strings.add(s1.toLowerCase());
+                    }
+                }
         }
         Iterator<String> it = strings.iterator();
         int count;

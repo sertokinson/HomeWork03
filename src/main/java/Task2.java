@@ -1,12 +1,12 @@
-package com.sbt.javascchool.rnd;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class Task5 {
+public class Task2 {
 
     public static void main(String[] args) throws IOException {
         List<String> strings = new ArrayList<>();
@@ -21,39 +21,19 @@ public class Task5 {
                     if (i == s.length() - 1) {
                         s1 += s.charAt(i);
                         if(s1 !="")
-                            strings.add(s1);
+                        strings.add(s1);
                     } else
                         s1 += s.charAt(i);
                 } else {
                     if(s1 !="")
-                        strings.add(s1);
+                    strings.add(s1);
                     s1 = "";
                 }
             }
         }
-        Iterator<String> it= iterator(strings);
-
-        while (it.hasNext()) {
-            System.out.println(it.next());
+        Collections.sort(strings,new StringComparator());
+        for (String s2 : strings) {
+            System.out.println(s2);
         }
-
-    }
-    public static Iterator<String> iterator(List<String> s) {
-        Iterator<String> it = new Iterator<String>() {
-
-            private int currentIndex = s.size()-1;
-
-            @Override
-            public boolean hasNext() {
-                return currentIndex >= 0 && s.get(currentIndex) != null;
-            }
-
-            @Override
-            public String next() {
-                return s.get(currentIndex--);
-            }
-
-        };
-        return it;
     }
 }

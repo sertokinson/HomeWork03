@@ -1,12 +1,12 @@
-package com.sbt.javascchool.rnd;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class Task3 {
+public class Task5 {
 
     public static void main(String[] args) throws IOException {
         List<String> strings = new ArrayList<>();
@@ -31,37 +31,29 @@ public class Task3 {
                 }
             }
         }
-        Iterator<String> it = strings.iterator();
-        int count;
-        int[]a=new int[strings.size()];
-        int k=0;
-        for (String s2 : strings) {
-            a[k]=Collections.frequency(strings,s2);
-            k++;
-        }
-        k=0;
+        Iterator<String> it= iterator(strings);
+
         while (it.hasNext()) {
-            String s3 = it.next();
-            count=Collections.frequency(strings,s3);
-            if (count>1){
-                it.remove();
-                a[k]=0;
-            }
-            k++;
-        }
-        k=0;
-        for (String s2 : strings) {
-            while(a[k]==0){
-                k++;
-            }
-            System.out.println(s2+" "+a[k]);
-            k++;
+            System.out.println(it.next());
         }
 
     }
+    public static Iterator<String> iterator(List<String> s) {
+        Iterator<String> it = new Iterator<String>() {
+
+            private int currentIndex = s.size()-1;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex >= 0 && s.get(currentIndex) != null;
+            }
+
+            @Override
+            public String next() {
+                return s.get(currentIndex--);
+            }
+
+        };
+        return it;
+    }
 }
-
-
-
-
-
