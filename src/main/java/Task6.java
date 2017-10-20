@@ -10,7 +10,7 @@ public class Task6 {
 
     public static void main(String[] args) throws IOException {
         Map<Integer,String > strings = new HashMap<>();
-        File f = new File("C:\\JavaSchool\\HomeWork_03\\text.txt");
+        File f = new File("C:\\JavaSchool\\Homeworks\\HomeWork_03\\newVersion\\collections\\text.txt");
         BufferedReader fin = new BufferedReader(new FileReader(f));
         String s;
         Integer index=0;

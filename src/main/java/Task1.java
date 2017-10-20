@@ -1,32 +1,20 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Task1 {
-
-    public static void main(String[] args) throws IOException {
-        File f = new File("C:\\JavaSchool\\HomeWork_03\\text.txt");
+    public static int differentCountString(File f) throws IOException {
         BufferedReader fin = new BufferedReader(new FileReader(f));
         String line;
-        Collection<String> strings = new ArrayList();
+        Set<String> strings = new HashSet<>();
+        Matcher m;
         while ((line = fin.readLine()) != null) {
-           strings.add(line);
+            m = Pattern.compile("[A-z]").matcher(line);
+            while (m.find())
+                strings.add(line.substring(m.start(), m.end()));
         }
-        int count = 0;
-        for (String string:strings) {
-            String s=string;
-            s=s.replaceAll("\\W|\\d", " ");
-            s=s.trim();
-            String[] news=s.split(" ");
-            for(int i=0;i<news.length;i++){
-                if(news[i].length()!=0)
-                    count++;
-            }
-        }
-        System.out.println(count);
+        return strings.size();
     }
 }
 
