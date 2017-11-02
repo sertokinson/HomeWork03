@@ -3,7 +3,7 @@ import java.util.List;
 
 public class ReverceIterable<T> implements Iterable {
     final List<T> list;
-    public ReverceIterable(List<T> list) {
+     ReverceIterable(List<T> list) {
         this.list = list;
     }
 

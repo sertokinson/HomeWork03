@@ -7,8 +7,9 @@ public class ReverceIterator<T> implements Iterator<T> {
 
     public ReverceIterator(List<T> list) {
         this.list = list;
-        currentIndex = list.size()-1;
+        currentIndex = list.size() - 1;
     }
+
     @Override
     public boolean hasNext() {
         return currentIndex >= 0;
